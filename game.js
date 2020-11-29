@@ -137,18 +137,19 @@ function iniciarJuego() {
             }
 
 
-            $itemList[i].onclick = function () {
-                console.log(vidas);
-                $click.play();
-                if ($itemList[i].val == 100 && !$boost) {
-                    boost();
-                }
+            $itemList[i].onmousedown = function () {
+                
+                    console.log(vidas);
+                    $click.play();
+                    if ($itemList[i].val == 100 && !$boost) {
+                        boost();
+                    }
 
-                main.removeChild($itemList[i]);
-                sumarPuntos($itemList[i].val);
-                velAdic += 0.03;
-                console.log(velAdic);
-
+                    main.removeChild($itemList[i]);
+                    sumarPuntos($itemList[i].val);
+                    velAdic += 0.03;
+                    console.log(velAdic);
+                
             }
 
         }
@@ -298,7 +299,7 @@ function boost() {
     }, 1150);
     crearItemsBoost = setInterval(function () {
         crearitem();
-    }, 900);
+    }, 700);
 
 
 }
