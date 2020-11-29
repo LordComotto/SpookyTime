@@ -298,7 +298,7 @@ function boost() {
     }, 1150);
     crearItemsBoost = setInterval(function () {
         crearitem();
-    }, 600);
+    }, 900);
 
 
 }
