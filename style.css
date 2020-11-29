@@ -134,4 +134,16 @@ body{
     
     
 }
+.vida{
+    margin: 0;
+    padding: 0;
+    left: 3%;
+    top: 1%;
+    position: absolute;
+    visibility: hidden;
+    color: rgb(255, 0, 0);
+    -webkit-text-stroke: 1px black;
+    font-size: 40px;
+    font-family: "Spooky";
+}
 

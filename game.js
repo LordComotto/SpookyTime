@@ -31,7 +31,8 @@ $boost = false;
 fondoPerder = document.getElementById("fondoPerder");
 btnReintentar = document.getElementById("btnReintentar");
 hScore = 0;
-
+vidas=3;
+vida=document.getElementById("vida");
 
 
 
@@ -41,9 +42,10 @@ playbtn.onclick = function () {
 
     inicioMusica.pause();
     risaBruja.play();
-
-
-
+    fondo.src = "images/info.png";
+    playbtn.style.visibility = "hidden";
+    logo.style.visibility = "hidden";
+    btnMusica.style.visibility = "hidden";
     pregunta = setInterval(function () {
         if (risaBruja.ended && !juegoStarted) {
             juegoStarted = true;
@@ -83,16 +85,21 @@ function iniciarJuego() {
 
     juegoMusica.play();
 
+    vida.style.visibility = "visible";
+    btnMusica.style.visibility = "visible";
+    
     playbtn.style.visibility = "hidden";
     logo.style.visibility = "hidden";
 
 
     score.style.visibility = "visible";
 
+    vidas=3;
     scoreVal = 0;
     velAdic = 0;
     $perder = false;
 
+    vida.innerHTML="♥: "+vidas;
 
     const itemLoop = setInterval(function () {
 
@@ -109,9 +116,18 @@ function iniciarJuego() {
             $itemList[i].style.transform = "rotate(" + $itemList[i].rotation + "deg)";
 
             if ($itemList[i].y > fondo.height && $itemList[i].val > 0 && $itemList[i].val < 90) {
-                clearInterval(itemMoverLoop);
-                clearInterval(itemLoop);
-                perder();
+                if(vidas < 1){
+                    console.log(vidas);
+                    clearInterval(itemMoverLoop);
+                    clearInterval(itemLoop);
+                    perder();
+
+                }else{
+                    main.removeChild($itemList[i]);
+                    vidas-=1;
+                    vida.innerHTML="♥: "+vidas;
+                }
+
             }
             if ($itemList[i].y > fondo.height && $itemList[i].val < 0) {
                 main.removeChild($itemList[i]);
@@ -122,6 +138,7 @@ function iniciarJuego() {
 
 
             $itemList[i].onclick = function () {
+                console.log(vidas);
                 $click.play();
                 if ($itemList[i].val == 100 && !$boost) {
                     boost();
@@ -310,6 +327,7 @@ function perder() {
     risaPerder.play();
     btnReintentar.onclick = function () {
         fondo.style.visibility = "visible";
+        risaPerder.currentTime = 20;
         velAdic = 0;
         scoreVal = 0;
         score.innerHTML = "Score: " + scoreVal;
