@@ -115,7 +115,7 @@ function iniciarJuego() {
             $itemList[i].rotation += 0.5;
             $itemList[i].style.transform = "rotate(" + $itemList[i].rotation + "deg)";
 
-            if ($itemList[i].y > fondo.height && $itemList[i].val > 0 && $itemList[i].val < 90) {
+            if ($itemList[i].y > fondo.height && $itemList[i].val > 5 && $itemList[i].val < 90) {
                 if(vidas < 1){
                     console.log(vidas);
                     clearInterval(itemMoverLoop);
@@ -147,7 +147,7 @@ function iniciarJuego() {
 
                     main.removeChild($itemList[i]);
                     sumarPuntos($itemList[i].val);
-                    velAdic += 0.015;
+                    velAdic += 0.01;
                     console.log(velAdic);
                 
             }
