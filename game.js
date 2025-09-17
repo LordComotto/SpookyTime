@@ -147,7 +147,7 @@ function iniciarJuego() {
 
                     main.removeChild($itemList[i]);
                     sumarPuntos($itemList[i].val);
-                    velAdic += 0.03;
+                    velAdic += 0.015;
                     console.log(velAdic);
                 
             }
